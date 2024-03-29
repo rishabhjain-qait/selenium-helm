@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-firefox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-node-firefox
+  template:
+    metadata:
+      labels:
+        app: selenium-node-firefox
+    spec:
+      containers:
+      - name: selenium-node-firefox
+        image: selenium/node-firefox:4.12.1-20230912
+        env:
+        - name: TZ
+          value: Asia/Kolkata
+        - name: SE_NODE_MAX_SESSIONS
+          value: "1"
+        - name: SE_NODE_SESSION_TIMEOUT
+          value: "21600"
+        - name: SE_NODE_OVERRIDE_MAX_SESSIONS
+          value: "true"
+        - name: SE_OPTS
+          value: --log-level FINE
+        - name: SE_EVENT_BUS_HOST
+          value: "10.1.2.3"
+        - name: SE_EVENT_BUS_PUBLISH_PORT
+          value: "4442"
+        - name: SE_EVENT_BUS_SUBSCRIBE_PORT
+          value: "4443" 
+        ports:
+        - containerPort: 5555

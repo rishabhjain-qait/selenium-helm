@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-grid-k8s-autoscaler-deployment
+  labels:
+    app: selenium-grid-k8s-autoscaler
+    name: selenium-grid-k8s-autoscaler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenium-grid-k8s-autoscaler
+  template:
+    metadata:
+      labels:
+        app: selenium-grid-k8s-autoscaler
+        name: selenium-grid-k8s-autoscaler
+    spec:
+      containers:
+        - name: selenium-grid-k8s-autoscaler
+          image: autoscaler-selenium-grid:1.0
+          env:
+            - name: k8s_host
+              value: kubernetes.docker.internal:6443
+            - name: k8s_token
+              value: eyJhbGciOiJSUzI1NiIsImtpZCI6IkppTzliTEpGbW1DbVYwUDAzRzFQUm9sd1loaGh2NE02bHk2LWdkRko0N0UifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImF1dG8tc2NhbGUtcm9ib3Qtc2EiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiYXV0by1zY2FsZS1yb2JvdC1zYSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImU3NjA5MTkzLWU2YWUtNDhkMC05OWE2LTE3YjQxMWJhZDgzNiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmF1dG8tc2NhbGUtcm9ib3Qtc2EifQ.gMfxr8jX0n9CRfWA1wA6iO5GaQIIIRzZ3gUgWT1P70yF5G7CSDfMQ7jYykF7MCL6RgmUSKYC3Wz8XzcaCYC2BuBL7KI_T5_8IiOTXpDnjJpsX0033-teEDYzaRWUAIWLdQ_LH4RB4eznFc4gUPNKx1M9w28Neer5WzLP5BU2P5hxUGGCaHsi22gw_7xSBLmih0Vp12twU9fKd6UkEdhc2BQ_ATCKZd_gI1VBxXd6Fypsh8LF1zlYzZs83qztgN6Q4eZipZggPtWNlK0MCnwOh80CemCEoj1rjAx4vOAS6F7IXDzYd2bJSpWSF0NHPV617NErpmJBlCo2bLsOBjYPsQ
+            - name: namespace
+              value: default
+            - name: chromeDeploymentName
+              value: selenium-node-chrome
+            - name: firefoxDeploymentName
+              value: selenium-node-firefox
+            - name: selenium_grid_host
+              value: "10.1.2.3:4444"
+            - name: ch_max_scale_limit
+              value: "5"
+            - name: ch_min_scale_limit
+              value: "2"
+            - name: ff_max_scale_limit
+              value: "5"
+            - name: ff_min_scale_limit
+              value: "2"
+            - name: grid_scale_check_frequency_in_sec
+              value: "10"
+            - name: server_port
+              value: "8088"
+            - name: logging_level_com_spr_k8sSelGrid
+              value: "INFO"

@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: scale-apps
+  namespace: default
+rules:
+  - apiGroups:
+      - "apps"
+      - ""
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    resources:
+        - "*"
+      # - deployments
+      # - deployments/scale
+      # - pods
