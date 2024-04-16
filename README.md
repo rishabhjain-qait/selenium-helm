@@ -81,7 +81,7 @@ curl -X POST \
 [Selenium Grid Important Endpoints](https://www.selenium.dev/documentation/grid/advanced_features/endpoints/#:~:text=Distributor-,Remove%20Node,it%20is%20unless%20explicitly%20killed.)
 
 
-# k8s api endpoint for autoscaling 
+# k8s api endpoint for autoscaling logic
 
 #### to get pods list - pod ips and name mapping 
 ```
