@@ -1,2 +1,4 @@
 image:
-  name: "selenium/hub:4.12.1-20230912"
+  hub: "selenium/hub:4.17.0-20240123"
+  chrome: "selenium/node-chrome:4.17.0-20240123"
+  firefox: "selenium/node-firefox:4.17.0-20240123"

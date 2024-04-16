@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: selenium-hub
-        image: {{ .Values.image.name }}
+        image: {{ .Values.image.hub }}
         ports:
         - containerPort: 4444
         env:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: selenium-node-chrome
-        image: selenium/node-chrome:4.12.1-20230912
+        image: {{ .Values.image.chrome }}
         env:
         - name: TZ
           value: Asia/Kolkata
@@ -27,7 +27,7 @@ spec:
         - name: SE_OPTS
           value: --log-level FINE
         - name: SE_EVENT_BUS_HOST
-          value: "10.1.2.3"
+          value: selenium-hub-service.default.svc.cluster.local
         - name: SE_EVENT_BUS_PUBLISH_PORT
           value: "4442"
         - name: SE_EVENT_BUS_SUBSCRIBE_PORT
