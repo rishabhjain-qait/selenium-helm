@@ -1,3 +1,6 @@
+# medium-blog-post
+[Medium Blog Post](https://medium.com/@rishabhjain01/autoscalable-selenium-grid-4-86bde156947e)
+
 # selenium-grid
 [Selenium Grid Official Documentation](https://www.selenium.dev/documentation/grid/)
 
